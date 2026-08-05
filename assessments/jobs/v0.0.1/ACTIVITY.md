@@ -4,7 +4,7 @@ Snapshot: **2026-07-23**. Cuenta de auditoría: `ext.aramos@qroma.com.pe`
 
 ---
 
-## 1. Verificar uso de Dataverse en el Default — ninguna app lo usa
+## 1. Verificación de uso de Dataverse en el Default — ninguna app lo usa
 
 Un entorno de Power Platform tiene **como máximo un (1) Dataverse**. El Default **sí** tiene Dataverse aprovisionado (`dataverse=Y`, 22 solutions). Por diseño, cualquier app del Default que use Dataverse apuntaría a **esa única instancia/organización** — no hay Dataverse por-app; es por-entorno.
 
@@ -29,7 +29,7 @@ Implicancia de gobierno: migrar estas apps a un entorno gobernado **no** requier
 
 ## 2. Actividad real de las aplicaciones
 
-### Medir mantenimiento con la admin API — ver CSV `apps-activity`
+### Medición de mantenimiento con la admin API — ver CSV `apps-activity`
 Por app: `owner, status, created, modified, lastPublish, sharedUsers, sharedGroups, premium, onPrem`.
 
 - 43 apps, **todas `status=Ready`** y todas publicadas alguna vez.
@@ -39,7 +39,7 @@ Por app: `owner, status, created, modified, lastPublish, sharedUsers, sharedGrou
 
 Limitación: esto mide *mantenimiento* (edición/publicación/compartir), **no uso runtime** (aperturas/usuarios). Una app sin editar desde 2022 puede seguir usándose a diario.
 
-### Medir uso runtime real — solo a nivel tenant (Graph `auditLogs/signIns`)
+### Medición de uso runtime real — solo a nivel tenant (Graph `auditLogs/signIns`)
 Fuente nueva encontrada: **Graph `auditLogs/signIns` responde 200** con el token `az` delegado (requiere Entra ID P1, presente). Muestra logins reales a Power Apps:
 
 - **Página más reciente (999 sign-ins) cubre solo 10 días** (2026-07-14 → 07-23) → el tenant genera **~100-170 lanzamientos/día** (tope 999 alcanzado en 10 días ⇒ ~3.000/mes).
@@ -48,7 +48,7 @@ Fuente nueva encontrada: **Graph `auditLogs/signIns` responde 200** con el token
 
 **→ Power Apps está muy vivo en Qroma: 150+ personas lo usan a diario.** El supuesto de "todo legacy/abandonado" es falso a nivel plataforma.
 
-### Delimitar el alcance — atribución por app/entorno no disponible con esta cuenta
+### Límites del alcance — atribución por app/entorno no disponible con esta cuenta
 Los sign-ins apuntan todos a `PowerApps - apps.powerapps.com` (el player), **agregado tenant-wide**: no distinguen cuál de las 43 apps del Default se abrió, ni siquiera si fue una app del Default vs Sandbox/Producción. Se probaron las 3 fuentes que sí dan detalle por-app y **todas denegaron**:
 
 | Fuente (uso runtime por-app) | Resultado |
@@ -65,6 +65,6 @@ Los sign-ins apuntan todos a `PowerApps - apps.powerapps.com` (el player), **agr
 
 ---
 
-## Aplicar al roadmap
+## Recomendaciones para el roadmap
 - **Punto 4 (clasificar mantener/migrar/archivar):** el proxy de compartición + la última edición 2023 bastan para marcar las 15 apps de prueba/demo como archivables. Para las 28 de negocio, **conseguir el audit log de Purview por-app antes de archivar** — hay uso real en el tenant y no queremos matar una app viva.
 - **Dataverse:** no es un blocker de migración (0 apps lo usan). El plan de migración desde Default debe centrarse en **re-crear conexiones** (OneDrive/SharePoint/SQL) bajo cuentas de servicio y en cerrar el **security group abierto**, no en mover tablas.

@@ -2,14 +2,14 @@
 
 Job: eliminar las apps listadas en [issue #1](https://github.com/aramos-qroma/power-platform-foundation/issues/1) y re-inventariar el tenant.
 
-## 1. Eliminar las apps del issue #1
+## 1. Eliminación de las apps del issue #1
 
 - **30/30 apps eliminadas** del entorno Default (30 únicas; el issue duplicaba las 2 de Anthony Colqui). Cada una verificada con `GET → 404` post-delete.
 - Registro pre-delete (appId, dueño, shared, última edición): [`scripts/deleted-apps.jsonl`](../../../scripts/deleted-apps.jsonl).
 - Restore posible ~7 días desde la eliminación (hasta ~2026-08-12) vía admin API `.../apps/{id}/restore`.
 - 6 de las 30 tenían usuarios compartidos (proxy de uso): Catalogo Tailoy2 (2), Registro Puesto Vacante (2), Prueba_Base, SISCOMER, Formulario de Puesto Vacante, DISTRIBUCION QROMA AQP (1 c/u). Eliminadas igual por orden explícita del issue.
 
-## 2. Re-inventariar el tenant (2026-08-05)
+## 2. Re-inventario del tenant (2026-08-05)
 
 CSVs: [`inventories/*/2026/08/05/current.csv`](../../inventories/).
 
@@ -20,7 +20,7 @@ CSVs: [`inventories/*/2026/08/05/current.csv`](../../inventories/).
 | Flows | **465** | **428** |
 
 
-## 3. Eliminar una aplicación (procedimiento)
+## 3. Procedimiento de eliminación de aplicaciones
 
 Requisitos: `az` CLI con sesión de cuenta **Power Platform Administrator** (`az login --tenant qroma.com.pe --use-device-code`). Sin `pwsh`/`pac` — todo vía REST.
 
@@ -39,7 +39,7 @@ Requisitos: `az` CLI con sesión de cuenta **Power Platform Administrator** (`az
 4. **Restaurar si hace falta** (ventana ~7 días): `POST .../scopes/admin/environments/{envId}/apps/{appId}/restore?api-version=2017-08-01` con token de `https://service.powerapps.com/`.
 5. **Re-inventariar** tras un lote: regenerar `inventories/apps/YYYY/MM/DD/current.csv` (extracción con paginación `nextLink`) y actualizar el assessment del job.
 
-## 4. Re-auditar el Default completo
+## 4. Re-auditoría completa del Default
 
 Primer audit sobre el universo real (134 apps / 428 flows), no la página 1:
 
@@ -48,7 +48,7 @@ Primer audit sobre el universo real (134 apps / 428 flows), no la página 1:
 - **Flows** → [`FLOWS.md`](FLOWS.md): 216 Started / 181 Stopped / 31 Suspended. **Hallazgo crítico: 169 flows (39%) son huérfanos — sus creadores ya no existen en el tenant (47 usuarios eliminados); 47 de esos flows siguen activos** sin dueño que los mantenga.
 - Inventario detallado: [`apps-activity/2026/08/05/current.csv`](../../inventories/apps-activity/2026/08/05/current.csv).
 
-## Resolver pendientes
+## Pendientes
 
 - [x] Re-auditar Default completo (134 apps reales, no 13) → [`APPLICATIONS.md`](APPLICATIONS.md), [`ACTIVITY.md`](ACTIVITY.md).
 - [x] Re-auditar flows del Default (428 reales) → [`FLOWS.md`](FLOWS.md).
@@ -57,7 +57,7 @@ Primer audit sobre el universo real (134 apps / 428 flows), no la página 1:
 
 Nada de esta sección se implementa en este job — es la propuesta de diseño. La viabilidad IaC fue verificada contra el provider Terraform `microsoft/power-platform` **3.9.1** (el que ya está lockeado en [`infrastructure/`](../../../infrastructure/)).
 
-### 1. Gobernar la creación de entornos vía IaC
+### 1. Gobernanza de creación de entornos vía IaC
 
 Hoy `infrastructure/` ya modela `powerplatform_environment` con nomenclatura FRAMEWORK §1 (workspaces dev/sbx/prd + tfvars), pero nada está aplicado (state vacío) y el directorio no está versionado. Pasos:
 
@@ -85,7 +85,7 @@ Hoy `infrastructure/` ya modela `powerplatform_environment` con nomenclatura FRA
 
 Resultado: crear un entorno = PR con tfvars nuevos que pasa validación de nomenclatura + security group + managed env, no un click en el admin center (creación manual ya bloqueada para no-admins vía hardening).
 
-### 2. Aplicar DLP por entorno vía IaC
+### 2. Configuración de DLP por entorno vía IaC
 
 `powerplatform_data_loss_prevention_policy` (3.9.1) soporta scoping por entorno: `environment_type = "OnlyEnvironments"` + `environments = [ids]`. Grupos `business_connectors` / `non_business_connectors` / `blocked_connectors`, clasificación default para conectores nuevos, y patrones de custom connectors.
 
