@@ -3,7 +3,7 @@
 Cuenta: `ext.aramos@qroma.com.pe` (Power Platform Admin).  
 Env ID: `Default-faed75e0-b942-4b73-85ac-7a32b852ceb8`
 
-## Aplicado vía API (BAP)
+## Aplicado vía API BAP
 
 | Objetivo | Acción | Resultado |
 |---|---|---|
@@ -19,7 +19,7 @@ Env ID: `Default-faed75e0-b942-4b73-85ac-7a32b852ceb8`
 | | Blocked existentes: OneDrive consumer, Dropbox, Google Drive | sin cambio |
 | No borrar Default | N/A | imposible por diseño |
 
-## Aplicado después (Managed Env + sharing limits — opción A)
+## Aplicado después — Managed Env y sharing limits, opción A
 
 | Objetivo | Acción | Resultado |
 |---|---|---|
@@ -32,7 +32,7 @@ Endpoint que funcionó:
 
 Efecto: makers **no** pueden compartir canvas apps con security groups; máx. **5 personas** por app en shares nuevos (~1 h en aplicarse). Shares existentes no se revocan solos. Correr apps en managed puede requerir licencia premium.
 
-## No aplicado (API no disponible o riesgo)
+## No aplicado — API no disponible o riesgo
 
 | Objetivo | Motivo | Cómo hacerlo |
 |---|---|---|
@@ -55,7 +55,7 @@ Efecto: makers **no** pueden compartir canvas apps con security groups; máx. **
 3. Default se llama **Productividad personal (default)** en el admin center.
 4. Un conector que Microsoft publique mañana no se usa hasta que un admin lo saque de Blocked.
 
-## Pendiente manual (portal)
+## Pendiente manual en portal
 
 1. **Managed Environment** en Default + sharing limits (ej. max 20 users / no groups).
 2. **Tenant isolation** (block all inbound/outbound salvo allowlist).

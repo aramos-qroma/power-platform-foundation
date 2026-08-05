@@ -39,7 +39,7 @@ Por app: `owner, status, created, modified, lastPublish, sharedUsers, sharedGrou
 
 Limitación: esto mide *mantenimiento* (edición/publicación/compartir), **no uso runtime** (aperturas/usuarios). Una app sin editar desde 2022 puede seguir usándose a diario.
 
-### Medición de uso runtime real — solo a nivel tenant (Graph `auditLogs/signIns`)
+### Medición de uso runtime real — solo a nivel tenant, Graph `auditLogs/signIns`
 Fuente nueva encontrada: **Graph `auditLogs/signIns` responde 200** con el token `az` delegado (requiere Entra ID P1, presente). Muestra logins reales a Power Apps:
 
 - **Página más reciente (999 sign-ins) cubre solo 10 días** (2026-07-14 → 07-23) → el tenant genera **~100-170 lanzamientos/día** (tope 999 alcanzado en 10 días ⇒ ~3.000/mes).

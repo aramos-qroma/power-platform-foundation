@@ -1,4 +1,4 @@
-# Assessment v0.0.2 — post-eliminación issue #1 (2026-08-05)
+# Assessment v0.0.2 — post-eliminación issue #1, 2026-08-05
 
 Job: eliminar las apps listadas en [issue #1](https://github.com/aramos-qroma/power-platform-foundation/issues/1) y re-inventariar el tenant.
 
@@ -9,7 +9,7 @@ Job: eliminar las apps listadas en [issue #1](https://github.com/aramos-qroma/po
 - Restore posible ~7 días desde la eliminación (hasta ~2026-08-12) vía admin API `.../apps/{id}/restore`.
 - 6 de las 30 tenían usuarios compartidos (proxy de uso): Catalogo Tailoy2 (2), Registro Puesto Vacante (2), Prueba_Base, SISCOMER, Formulario de Puesto Vacante, DISTRIBUCION QROMA AQP (1 c/u). Eliminadas igual por orden explícita del issue.
 
-## 2. Re-inventario del tenant (2026-08-05)
+## 2. Re-inventario del tenant, 2026-08-05
 
 CSVs: [`inventories/*/2026/08/05/current.csv`](../../inventories/).
 

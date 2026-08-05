@@ -1,4 +1,4 @@
-# Flows entorno Default — primera auditoría (2026-08-05)
+# Flows entorno Default — primera auditoría, 2026-08-05
 
 ## Estado
 
@@ -8,11 +8,11 @@
 | Stopped | 181 |
 | Suspended | 31 |
 
-## Reasignación o apagado de flows huérfanos (hallazgo principal)
+## Reasignación o apagado de flows huérfanos — hallazgo principal
 
 **169 de 428 flows (39%) pertenecen a 47 usuarios YA ELIMINADOS del tenant** (identificados como "usuario eliminado" en la tabla por owner). De ellos, **47 siguen en Started** — corren con conexiones del usuario eliminado (o fallan silenciosamente) y nadie puede mantenerlos. Ningún flow huérfano tiene co-owner conocido. Acción sugerida: inventariar sus conexiones, reasignar los Started que importen a cuentas funcionales, apagar el resto.
 
-## Por owner (top 20)
+## Distribución por owner — top 20
 
 | Owner | # | Started | Stopped | Suspended |
 |---|---|---|---|---|
@@ -75,7 +75,7 @@
 | Notifications | 6 |
 | Mail | 4 |
 
-## Depuración de duplicados por nombre (copias "Guardar como")
+## Depuración de duplicados por nombre — copias "Guardar como"
 
 | Nombre | # copias | Owners |
 |---|---|---|
@@ -92,7 +92,7 @@
 | Induccion a Terceros: Version 3 | 2 | (usuario eliminado 9ec26276…), (usuario eliminado d05b5922…) |
 | Inducción de contratistas new V4 | 2 | (usuario eliminado 1d62689f…), (usuario eliminado d05b5922…) |
 
-## Revisión de flows suspendidos (31)
+## Revisión de los 31 flows suspendidos
 
 Suspendido = deshabilitado por la plataforma (violación DLP, facturación o conexión rota); revisar caso por caso.
 

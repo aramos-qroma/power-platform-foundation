@@ -1,4 +1,4 @@
-# Actividad y conectores — Default re-audit (2026-08-05)
+# Actividad y conectores — re-auditoría del Default, 2026-08-05
 
 Snapshot 2026-08-05, cuenta `ext.aramos@qroma.com.pe`, método az+REST paginado ([detalle v0.0.1](../v0.0.1/ACTIVITY.md) — las limitaciones de atribución runtime siguen vigentes).
 
