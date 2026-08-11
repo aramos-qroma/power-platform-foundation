@@ -127,7 +127,7 @@ La **solución** es el mecanismo oficial para **sacar** ese trabajo del predeter
 
 ```mermaid
 flowchart LR
-  def["Predeterminado<br/>TI en la sombra"]
+  def["Predeterminado<br/> TI"]
   cls["Clasificar<br/>mantener · migrar · archivar"]
   sol["Solución<br/>Agregar existente"]
   dev["…-dev-…"]
