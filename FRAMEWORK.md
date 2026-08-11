@@ -4,12 +4,12 @@
 
 ## Índice
 
-1. [Nomenclatura](#1-nomenclatura) ← _definido_
-2. [Soluciones](#2-soluciones) ← _definido_
-3. [Ciclo de vida](#3-ciclo-de-vida) ← _definido_
-4. [Protección del entorno](#4-protección-del-entorno) ← _definido_
-5. Catálogo de conectores — _pendiente_
-6. Convenciones internas de la app (pantallas, controles, variables) — _pendiente_
+1. [Nomenclatura](#1-nomenclatura)
+2. [Soluciones](#2-soluciones)
+3. [Ciclo de vida](#3-ciclo-de-vida)
+4. [Protección del entorno](#4-protección-del-entorno)
+5. TODO: Catálogo de conectores
+6. TODO: Convenciones internas de la app (pantallas, controles, variables)
 
 ---
 
