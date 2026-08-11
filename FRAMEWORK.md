@@ -296,7 +296,7 @@ La migración (§2) pone el producto en **dev**. A partir de ahí, el predetermi
 
 ```mermaid
 flowchart TD
-  edit["1 · Creador edita en DEV<br/>solución no administrada"]
+  edit["1 · Creador edita en DEV<br/> solución no administrada"]
   export["2 · Exportar / descomprimir<br/>código → git"]
   pack["3 · Empaquetar en CI<br/>→ zip de release"]
   sbx["4 · Importar ADMINISTRADA en SBX<br/>+ configuración sbx"]
