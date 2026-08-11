@@ -339,7 +339,7 @@ Crear el entorno (§1) **no basta**. Hasta que no tenga la protección de esta s
 
 > Un entorno sin grupo de seguridad, sin política de datos y sin control de edición en prd es otro predeterminado con otro nombre.
 
-### 4.1 Checklist al crear
+### 4.1 Runbook de creacion.
 
 Por cada `pe-…-{dev|sbx|prd}-…` nuevo, en este orden:
 
